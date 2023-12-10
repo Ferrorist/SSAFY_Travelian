@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.enjoytrip.model.dao.BoardDao">
+	<insert id="write" parameterType="Board">
+		insert into board (subject, content, user_id)
+		value (#{subject}, #{content}, #{userId})
+	</insert>
+	
+	<select id="getList" resultType="Board">
+		select b.article_no, b.subject, b.content, b.user_id, m.name, b.hit, b.register_time
+		from board b
+		join member m on b.user_id = m.user_id
+	</select>
+	
+	<select id="getBoard" parameterType="string" resultType="Board">
+		select b.article_no, b.subject, b.content, b.user_id, m.name, b.hit, b.register_time
+		from board b
+		join member m on b.user_id = m.user_id
+		where b.article_no = #{articleNo}
+	</select>
+	
+	<update id="updateHit" parameterType="string">
+		update board
+		set hit = hit + 1
+		where article_no = #{articleNo}
+	</update>
+	
+	<update id="modify" parameterType="Board">
+		update board
+		set subject = #{subject}, content = #{content}
+		where article_no = #{articleNo}
+	</update>
+	
+	<delete id="delete" parameterType="string">
+		delete from board
+		where article_no = #{articleNo}
+	</delete>
+	
+	<select id="getBoardByName" parameterType="string" resultType="Board">
+        select b.article_no, b.subject, b.content, b.user_id, m.name, b.hit, b.register_time
+        from board b
+        join member m on b.user_id = m.user_id
+        where m.name = #{userId}
+    </select>
+    
+    <select id="getBoardByTitle" parameterType="string" resultType="Board">
+        select b.article_no, b.subject, b.content, b.user_id, m.name, b.hit, b.register_time
+        from board b
+        join member m on b.user_id = m.user_id
+        where b.subject like concat('%', #{title}, '%')
+    </select>
+	
+</mapper>

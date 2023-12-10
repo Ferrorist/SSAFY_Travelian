@@ -1,0 +1,64 @@
+travelian_back/HELP.md
+travelian_back/target/
+!travelian_back/.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+travelian_back/.metadata
+travelian_back/.apt_generated
+travelian_back/.classpath
+travelian_back/.factorypath
+travelian_back/.project
+travelian_back/.settings
+travelian_back/.springBeans
+travelian_back/.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+travelian_back/.vscode/
+
+# Logs
+travelian_front/logs
+travelian_front/*.log
+travelian_front/npm-debug.log*
+travelian_front/yarn-debug.log*
+travelian_front/yarn-error.log*
+travelian_front/pnpm-debug.log*
+travelian_front/lerna-debug.log*
+
+travelian_front/node_modules
+travelian_front/.DS_Store
+travelian_front/dist
+travelian_front/dist-ssr
+travelian_front/coverage
+travelian_front/*.local
+
+travelian_front/cypress/videos/
+travelian_front/cypress/screenshots/
+
+# Editor directories and files
+travelian_front/.vscode/*
+!travelian_front/.vscode/extensions.json
+travelian_front/.idea
+travelian_front/*.suo
+travelian_front/*.ntvs*
+travelian_front/*.njsproj
+travelian_front/*.sln
+travelian_front/*.sw?
+

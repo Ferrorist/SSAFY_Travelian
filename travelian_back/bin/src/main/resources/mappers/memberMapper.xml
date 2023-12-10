@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.enjoytrip.model.dao.MemberDao">
+	<select id="loginUser" parameterType="Member" resultType="Member">
+		select user_id, password, name, email_id, email_domain, register_time, is_admin
+		from member
+		where user_id = #{userId} and password = #{password}
+	</select>
+
+	<insert id="regist" parameterType="Member">
+		insert into member (user_id, password, name, email_id, email_domain, is_admin)
+		values (#{userId}, #{password}, #{name}, #{emailId}, #{emailDomain}, 0)
+	</insert>
+
+	<select id="idCheck" parameterType="string" resultType="int">
+		select count(user_id)
+		from member
+		where user_id = #{userId}
+	</select>
+
+	<!-- ADMIN -->
+	<select id="getList" resultType="Member">
+		select user_id, password, name, email_id, email_domain, register_time, is_admin
+		from member
+	</select>
+	
+	<select id="searchMember" parameterType="string" resultType="Member">
+		select user_id, password, name, email_id, email_domain, register_time, is_admin
+		from member
+		where user_id = #{userId}
+	</select>
+	
+	<insert id="insertMember" parameterType="Member">
+		insert into member (user_id, password, name, email_id, email_domain, is_admin)
+		values (#{userId}, #{password}, #{name}, #{emailId}, #{emailDomain}, #{isAdmin})
+	</insert>
+	
+	<update id="updateMember" parameterType="Member">
+		update member
+		set name = #{name}, email_id = #{emailId}, email_domain = #{emailDomain}
+		where user_id = #{userId}
+	</update>
+	
+	<delete id="deleteMember" parameterType="string">
+		delete from member
+		where user_id = #{userId}
+	</delete>
+</mapper>
